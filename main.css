@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Volkhov:700');
+
+body{
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+
+    background: #916749;
+    mix-blend-mode: normal;
+}
+
+#title{
+    position: absolute;
+    width: 1175px;
+    height: 355px;
+    left: 35px;
+    top: calc(50% - 355px/2 - 397.5px);
+
+    font-family: Volkhov;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 34px;
+    font-size: 35px;
+    letter-spacing: 0.1em;
+
+    color: #F4F4F6;  
+}
