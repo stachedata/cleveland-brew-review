@@ -1,27 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Volkhov:700');
 
 body{
-    position: relative;
-    width: 1920px;
-    height: 1080px;
-
     background: #916749;
-    mix-blend-mode: normal;
+}
+
+#container{
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 33% 33% 33%;
+    grid-template-areas: 
+        "title title map"
+        "topBrew topBrew map"
+        "brews brews brews";
 }
 
 #title{
-    position: absolute;
-    width: 1175px;
-    height: 355px;
-    left: 35px;
-    top: calc(50% - 355px/2 - 397.5px);
-
+    grid-area: title;
+    margin: 20px 0 0 20px;
     font-family: Volkhov;
     font-style: normal;
     font-weight: bold;
-    line-height: 34px;
-    font-size: 35px;
+    line-height: 90%;
+    font-size: 7vw;
     letter-spacing: 0.1em;
 
     color: #F4F4F6;  
+}
+
+#title::first-line{
+    font-size: 9.3vw;
+}
+
+#topBrew{
+    grid-area: topBrew;
+    align-self: center;
+    font-family: Montserrat;
+    font-size: 4vw;
 }
