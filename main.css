@@ -53,6 +53,7 @@ body{
 
 #brews{
     display: flex;
+    overflow-x: auto;
     grid-area: brews;
     font-size: 2vw;
     font-weight: bold;
