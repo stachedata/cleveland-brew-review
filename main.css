@@ -7,6 +7,7 @@ body{
     margin: 0;
     min-height: 100%;
     background: #916749;
+    /* overflow: hidden; */
 }
 
 #container{
@@ -14,11 +15,12 @@ body{
     width: 100vw;
     height: 100vh;
     grid-template-columns: 60% 40%;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 32% 32% 32% 4%;
     grid-template-areas: 
         "title map"
         "topBrew map"
-        "brews brews";
+        "brews brews"
+        "toolbar toolbar";
 }
 
 #title{
@@ -34,6 +36,12 @@ body{
 
 #title::first-line{
     font-size: 9.2vw;
+}
+
+#map{
+    grid-area: map;
+    justify-self: center;
+    align-self: center;
 }
 
 #topBrew{
@@ -52,7 +60,8 @@ body{
 }
 
 #brews{
-    display: flex;
+    list-style-type: none;
+    display: inline-block;
     overflow-x: auto;
     grid-area: brews;
     font-size: 2vw;
@@ -62,15 +71,13 @@ body{
 }
 
 .brew{
-    margin: 0 50px;
-    width: 600px;
+    width: 500px;
     height: auto;
     text-align: right;
     white-space: nowrap;
 }
 
-#map{
-    grid-area: map;
-    justify-self: center;
-    align-self: center;
+#toolbar{
+    grid-area: toolbar;
+    margin: auto;
 }
