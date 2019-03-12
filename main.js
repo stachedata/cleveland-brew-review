@@ -35,22 +35,26 @@ const printBrews = () => {
             document.getElementById('brews').appendChild(brewDiv)
         }
 
-        // let brewsList = document.getElementsByClassName('brew')
-        // while(brewsList.length > 0) {
-        //     brewsList.setAttribute("info", brew.where + "<br>" + brew.info)
-        // }
+        brewDiv.setAttribute("info", brew.where + "<br>" + brew.info)
+        brewDiv.addEventListener('click', () => {
+            if(brewDiv.getAttribute("info") == brewDiv.innerHTML) {
+                brewDiv.innerHTML = brewDiv.getAttribute("og");
+            } 
+            else {
+                brewDiv.setAttribute("og", brewDiv.innerHTML);
+                brewDiv.innerHTML = brewDiv.getAttribute("info");
+            }
+        })
     }) 
-    
 }
-
 
 newBrew('Rising Star', "Lakewood", 'Iced Mocha', 3, "Super good.")
 newBrew("Pour", "Cleveland", "Not Mocha", 1, "It's ok.")
 newBrew("Pheonix", "Cleveland", "Hot Mocha", 3, "Very nice.")
-newBrew("Duck Rabbit", "Cleveland", "Espresso", 2, "")
-newBrew("Rising Star", "Lakewood", "Coffee", 2, "")
-newBrew("7-Eleven", "Lakewood", "Coffee", 1, "")
-newBrew("QuickStop", "Cleveland", "Coffee", 1, "")
+newBrew("Duck Rabbit", "Cleveland", "Espresso", 2, "hi")
+newBrew("Rising Star", "Lakewood", "Coffee", 2, "hi")
+newBrew("7-Eleven", "Lakewood", "Coffee", 1, "hi")
+newBrew("QuickStop", "Cleveland", "Coffee", 1, "hi")
 printBrews()
 
 const moveBrews = new Siema({
@@ -60,15 +64,3 @@ const moveBrews = new Siema({
 })
 document.getElementById('left').addEventListener('click', () => moveBrews.prev(3))
 document.getElementById('right').addEventListener('click', () => moveBrews.next(3))
-    
-
-const brew = document.getElementsByClassName('brew')[0]
-    brew.addEventListener('click', () => {
-        if(brew.getAttribute("info") == brew.innerHTML) {
-            brew.innerHTML = brew.getAttribute("og");
-        } 
-        else {
-            brew.setAttribute("og", brew.innerHTML);
-            brew.innerHTML = brew.getAttribute("info");
-        }
-})
