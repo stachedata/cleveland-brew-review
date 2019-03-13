@@ -1,9 +1,9 @@
 const brews = []
 
-const newBrew = (cafe,where,drink,rating,info) => {
+const newBrew = (cafe,location,drink,rating,info) => {
     const brew = {
         cafe: cafe,
-        where: where,
+        location: location,
         drink: drink,
         rating: rating,
         info: info
@@ -20,7 +20,8 @@ const printBrews = () => {
 
         if(brew.rating == 3) {
             if(document.getElementById('topBrew').innerHTML == ""){
-                document.getElementById('topBrew').innerHTML = brew.cafe + "<br> &#9733 &#9733 &#9733  " + brew.drink 
+                brewDiv.innerHTML = brew.cafe + "<br> &#9733 &#9733 &#9733  " + brew.drink
+                document.getElementById('topBrew').appendChild(brewDiv) 
             }else{
                 brewDiv.innerHTML = brew.cafe + "<br> &#9733 &#9733 &#9733  " + brew.drink
                 document.getElementById('brews').appendChild(brewDiv)
@@ -35,7 +36,7 @@ const printBrews = () => {
             document.getElementById('brews').appendChild(brewDiv)
         }
 
-        brewDiv.setAttribute("info", brew.where + "<br>" + brew.info)
+        brewDiv.setAttribute("info", brew.location + "<br>" + brew.info)
         brewDiv.addEventListener('click', () => {
             if(brewDiv.getAttribute("info") == brewDiv.innerHTML) {
                 brewDiv.innerHTML = brewDiv.getAttribute("og");
@@ -52,7 +53,7 @@ newBrew('Rising Star', "Lakewood", 'Iced Mocha', 3, "Super good.")
 newBrew("Pour", "Cleveland", "Not Mocha", 1, "It's ok.")
 newBrew("Pheonix", "Cleveland", "Hot Mocha", 3, "Very nice.")
 newBrew("Duck Rabbit", "Cleveland", "Espresso", 2, "hi")
-newBrew("Rising Star", "Lakewood", "Coffee", 2, "hi")
+newBrew("Rising Star", "Downtown Cleveland", "Coffee", 2, "hi")
 newBrew("7-Eleven", "Lakewood", "Coffee", 1, "hi")
 newBrew("QuickStop", "Cleveland", "Coffee", 1, "hi")
 printBrews()
@@ -64,3 +65,27 @@ const moveBrews = new Siema({
 })
 document.getElementById('left').addEventListener('click', () => moveBrews.prev(3))
 document.getElementById('right').addEventListener('click', () => moveBrews.next(3))
+
+let maps = document.querySelectorAll('path')
+maps.forEach(map => {
+    map.addEventListener('click', () => {
+        if (map.getAttribute("fill") == "#F4F4F6"){
+            map.setAttribute("fill", "transparent")
+        }
+        else{
+            map.setAttribute("fill", "#F4F4F6")
+        }
+
+        // let name = map.getAttribute("name")
+        // sortBrews(name)
+    })
+})
+
+// testing sorted brews
+// const sortBrews = (expr) => {
+//     let sortedBrew = brews
+//     sortedBrew = brews.map(brew => {
+//         if (expr != brew.location) sortedBrew.splice(brew, 1)
+//     })
+//     console.log(sortedBrew)
+// }
