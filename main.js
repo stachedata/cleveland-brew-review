@@ -66,20 +66,40 @@ const moveBrews = new Siema({
 document.getElementById('left').addEventListener('click', () => moveBrews.prev(3))
 document.getElementById('right').addEventListener('click', () => moveBrews.next(3))
 
-let maps = document.querySelectorAll('path')
-maps.forEach(map => {
-    map.addEventListener('click', () => {
-        if (map.getAttribute("fill") == "#F4F4F6"){
-            map.setAttribute("fill", "transparent")
-        }
-        else{
-            map.setAttribute("fill", "#F4F4F6")
-        }
 
-        // let name = map.getAttribute("name")
-        // sortBrews(name)
-    })
+
+
+let maps = document.querySelectorAll('path')
+
+maps.forEach(map => {
+    if (map.getAttribute("fill") != "#F4F4F6"){
+        map.addEventListener('click', () => {
+            if (map.getAttribute("fill") == "transparent"){
+                map.setAttribute("fill", "#F4F4F6")
+            }
+            else{
+                map.setAttribute("fill", "transparent")
+            }
+
+            // let name = map.getAttribute("name")
+            // sortBrews(name)
+        })
+    }
 })
+
+// maps.forEach(map => map.addEventListener('click', () => map.setAttribute("fill", "#F4F4F6"), {once:true}))
+
+// for(let i=0;i<maps.length;i++){
+//     let anyMapClicked = false;
+//     maps.forEach(map => {
+//         if(map.getAttribute("fill") == "#F4F4F6") anyMapClicked == true
+//     })
+
+//     console.log(anyMapClicked)
+//     i++
+
+
+// }
 
 // testing sorted brews
 // const sortBrews = (expr) => {
