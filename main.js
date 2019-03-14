@@ -9,6 +9,7 @@ const newBrew = (cafe,location,drink,rating,info) => {
         info: info
     }
     brews.push(brew)
+    console.log("push")
 } 
 
 const printBrews = () => {
@@ -67,45 +68,38 @@ document.getElementById('left').addEventListener('click', () => moveBrews.prev(3
 document.getElementById('right').addEventListener('click', () => moveBrews.next(3))
 
 
-
-
 let maps = document.querySelectorAll('path')
 
+console.log("before click: ",brews)
 maps.forEach(map => {
-    if (map.getAttribute("fill") != "#F4F4F6"){
-        map.addEventListener('click', () => {
-            if (map.getAttribute("fill") == "transparent"){
-                map.setAttribute("fill", "#F4F4F6")
-            }
-            else{
-                map.setAttribute("fill", "transparent")
-            }
-
-            // let name = map.getAttribute("name")
-            // sortBrews(name)
-        })
-    }
+    map.addEventListener('click', () => {
+        console.log("click: ",brews)
+        if (map.getAttribute("fill") == "transparent" && areMapsFilled(maps) == false){
+            map.setAttribute("fill", "#F4F4F6")
+            // sortBrews(map.getAttribute("alt"),brews)
+        }
+        else{
+            map.setAttribute("fill", "transparent")
+        }
+        // let name = map.getAttribute("name")
+        // sortBrews(name)
+    })
 })
 
-// maps.forEach(map => map.addEventListener('click', () => map.setAttribute("fill", "#F4F4F6"), {once:true}))
+const areMapsFilled = (maps) => {
+    let filled = false
+    maps.forEach(map => {
+        if (map.getAttribute("fill") == "#F4F4F6") filled = true
+    })
+    return filled
+}
 
-// for(let i=0;i<maps.length;i++){
-//     let anyMapClicked = false;
-//     maps.forEach(map => {
-//         if(map.getAttribute("fill") == "#F4F4F6") anyMapClicked == true
+//testing sorted brews
+// const sortBrews = (name,brews) => {
+//     let sortedBrews = brews
+//     console.log("before sort: ", name)
+//     sortedsBrew = brews.map(brew => {
+//         if (name != brew.location) sortedBrews.splice(brew, 1)
 //     })
-
-//     console.log(anyMapClicked)
-//     i++
-
-
-// }
-
-// testing sorted brews
-// const sortBrews = (expr) => {
-//     let sortedBrew = brews
-//     sortedBrew = brews.map(brew => {
-//         if (expr != brew.location) sortedBrew.splice(brew, 1)
-//     })
-//     console.log(sortedBrew)
+//     console.log("after sort: ",sortedBrews[0])
 // }
