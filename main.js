@@ -8,7 +8,7 @@ const createCarousel = () => {
     document.getElementById('right').addEventListener('click', () => brewCarousel.next(3))
 }
 
-const changeTitle = (location) => document.getElementById('title').innerHTML = location + "<br>BREW REVIEW"
+const changeTitle = (location) => document.getElementById('title').innerHTML = location + "<br>Brew Review"
 
 const brews = []
 
@@ -102,7 +102,7 @@ maps.forEach(map => {
         }
         else{
             map.setAttribute("fill", "transparent")
-            printBrews(brews)
+            if(areMapsFilled(maps) == false) printBrews(brews)
         }
     })
 })
