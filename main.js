@@ -1,39 +1,61 @@
+const createCarousel = () => {
+    const brewCarousel = new Siema({
+        selector: '#brews',
+        perPage: 3,
+        draggable: false,
+    })
+    document.getElementById('left').addEventListener('click', () => brewCarousel.prev(3))
+    document.getElementById('right').addEventListener('click', () => brewCarousel.next(3))
+}
+
+const changeTitle = (location) => document.getElementById('title').innerHTML = location + "<br>BREW REVIEW"
+
 const brews = []
 
 const newBrew = (cafe,location,drink,rating,info) => {
+    let stars
+    if(rating == 3) stars = "<br> &#9733 &#9733 &#9733  "
+    else if(rating == 2) stars = "<br> &#9733 &#9733 &#9734  "
+    else stars = "<br> &#9733 &#9734 &#9734  "
+
     const brew = {
         cafe: cafe,
         location: location,
         drink: drink,
         rating: rating,
-        info: info
+        stars: stars,
+        info: info,
+        print() {
+            return this.cafe + this.stars + this.drink
+        }
     }
     brews.push(brew)
-    console.log("push")
 } 
 
-const printBrews = () => {
+const printBrews = (brews) => {
+    changeTitle("Cuyohoga")
+    removeBrews()
     brews.sort((a,b) => b.rating - a.rating)
 
     brews.map(brew => {
         const brewDiv = document.createElement('div')
         brewDiv.className = 'brew'
 
-        if(brew.rating == 3) {
+        if(brew.rating >= 1) {
             if(document.getElementById('topBrew').innerHTML == ""){
-                brewDiv.innerHTML = brew.cafe + "<br> &#9733 &#9733 &#9733  " + brew.drink
+                brewDiv.innerHTML = brew.print()
                 document.getElementById('topBrew').appendChild(brewDiv) 
             }else{
-                brewDiv.innerHTML = brew.cafe + "<br> &#9733 &#9733 &#9733  " + brew.drink
+                brewDiv.innerHTML = brew.print()
                 document.getElementById('brews').appendChild(brewDiv)
             }
         }
         else if(brew.rating == 2){
-            brewDiv.innerHTML = brew.cafe + "<br> &#9733 &#9733 &#9734  " + brew.drink
+            brewDiv.innerHTML = brew.print()
             document.getElementById('brews').appendChild(brewDiv)
         }
         else{
-            brewDiv.innerHTML = brew.cafe + "<br> &#9733 &#9734 &#9734  " + brew.drink
+            brewDiv.innerHTML = brew.print()
             document.getElementById('brews').appendChild(brewDiv)
         }
 
@@ -48,41 +70,40 @@ const printBrews = () => {
             }
         })
     }) 
+    createCarousel()
+}
+
+const removeBrews = () => {
+    const allBrews = document.getElementsByClassName("allBrews")
+    while(allBrews[0].firstChild && allBrews[1].firstChild){
+        allBrews[0].removeChild(allBrews[0].firstChild)
+        allBrews[1].removeChild(allBrews[1].firstChild)
+    }
 }
 
 newBrew('Rising Star', "Lakewood", 'Iced Mocha', 3, "Super good.")
-newBrew("Pour", "Cleveland", "Not Mocha", 1, "It's ok.")
-newBrew("Pheonix", "Cleveland", "Hot Mocha", 3, "Very nice.")
-newBrew("Duck Rabbit", "Cleveland", "Espresso", 2, "hi")
-newBrew("Rising Star", "Downtown Cleveland", "Coffee", 2, "hi")
+newBrew("Pheonix", "Cleveland Westside", "Hot Mocha", 3, "Very nice.")
+newBrew("Duck Rabbit", "Cleveland Eastside", "Espresso", 1, "hi")
+newBrew("Rising Star", "Cleveland Downtown", "Coffee", 2, "hi")
+newBrew("Pour", "Cleveland Eastside", "Not Mocha", 1, "It's ok.")
 newBrew("7-Eleven", "Lakewood", "Coffee", 1, "hi")
-newBrew("QuickStop", "Cleveland", "Coffee", 1, "hi")
-printBrews()
+newBrew("QuickStop", "Cleveland Downtown", "Coffee", 1, "hi")
+printBrews(brews)
 
-const moveBrews = new Siema({
-    selector: '#brews',
-    perPage: 3,
-    draggable: false,
-})
-document.getElementById('left').addEventListener('click', () => moveBrews.prev(3))
-document.getElementById('right').addEventListener('click', () => moveBrews.next(3))
 
 
 let maps = document.querySelectorAll('path')
 
-console.log("before click: ",brews)
 maps.forEach(map => {
     map.addEventListener('click', () => {
-        console.log("click: ",brews)
         if (map.getAttribute("fill") == "transparent" && areMapsFilled(maps) == false){
             map.setAttribute("fill", "#F4F4F6")
-            // sortBrews(map.getAttribute("alt"),brews)
+            sortBrewsByLocation(map.getAttribute("alt"),brews)
         }
         else{
             map.setAttribute("fill", "transparent")
+            printBrews(brews)
         }
-        // let name = map.getAttribute("name")
-        // sortBrews(name)
     })
 })
 
@@ -94,12 +115,14 @@ const areMapsFilled = (maps) => {
     return filled
 }
 
-//testing sorted brews
-// const sortBrews = (name,brews) => {
-//     let sortedBrews = brews
-//     console.log("before sort: ", name)
-//     sortedsBrew = brews.map(brew => {
-//         if (name != brew.location) sortedBrews.splice(brew, 1)
-//     })
-//     console.log("after sort: ",sortedBrews[0])
-// }
+const sortBrewsByLocation = (name,brews) => {
+    removeBrews()
+    let sortedBrews = []
+    brews.map(brew => {
+        if (name == brew.location) sortedBrews.push(brew)
+    })
+    printBrews(sortedBrews)
+    changeTitle(name)
+}
+
+
