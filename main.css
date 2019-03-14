@@ -35,7 +35,8 @@ body{
 }
 
 #title::first-line{
-    font-size: 9.2vw;
+    font-size: 12.4vw;
+    font-variant: small-caps;
 }
 
 #map{
@@ -70,12 +71,12 @@ body{
     line-height: 87px;
 }
 
-.brew{
+/* .brew{
     width: 500px;
     height: auto;
     text-align: right;
     white-space: nowrap;
-}
+} */
 
 #toolbar{
     grid-area: toolbar;
