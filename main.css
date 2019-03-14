@@ -4,7 +4,7 @@ html{
     height: 100%;
 }
 body{
-    margin: 0;
+    margin: 0 3%;
     min-height: 100%;
     background: #916749;
     /* overflow: hidden; */
@@ -14,8 +14,8 @@ body{
     display: grid;
     width: 100vw;
     height: 100vh;
-    grid-template-columns: 60% 40%;
-    grid-template-rows: 32% 32% 32% 4%;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 40% 28% 28% 4%;
     grid-template-areas: 
         "title map"
         "topBrew map"
@@ -25,18 +25,19 @@ body{
 
 #title{
     grid-area: title;
-    margin: 50px 0 0 15px;
+    margin: 50px 0 0 0;
     font-family: Volkhov;
     font-weight: bold;
     line-height: 130%;
-    font-size: 6.92vw;
+    font-size: 5.5vw;
     letter-spacing: 0.1em;
     color: #F4F4F6;  
+    font-variant: small-caps;
 }
 
 #title::first-line{
-    font-size: 12.4vw;
-    font-variant: small-caps;
+    font-size: 11vw;
+    
 }
 
 #map{
@@ -53,7 +54,7 @@ body{
     font-weight: bold;
     letter-spacing: 0.1em;
     line-height: 87px;
-    text-align: right;
+    text-align: left;
 }
 
 #topBrew::first-line{
@@ -69,6 +70,7 @@ body{
     font-weight: bold;
     letter-spacing: 0.1em;
     line-height: 87px;
+    margin: 0 5%;
 }
 
 /* .brew{
