@@ -93,27 +93,22 @@ printBrews(brews)
 
 
 let maps = document.querySelectorAll('path')
-
-maps.forEach(map => {
+let lastClickedMap
+maps.forEach((map,i) => {
     map.addEventListener('click', () => {
-        if (map.getAttribute("fill") == "transparent" && areMapsFilled(maps) == false){
-            map.setAttribute("fill", "#F4F4F6")
+		if(lastClickedMap != undefined) maps[lastClickedMap].setAttribute("fill", "transparent")
+        if (map.getAttribute("fill") == "transparent" && map != maps[lastClickedMap]){   
+			lastClickedMap = i
+			map.setAttribute("fill", "#F4F4F6")
             sortBrewsByLocation(map.getAttribute("alt"),brews)
         }
         else{
-            map.setAttribute("fill", "transparent")
-            if(areMapsFilled(maps) == false) printBrews(brews)
+			lastClickedMap = undefined
+			map.setAttribute("fill", "transparent")
+            printBrews(brews)
         }
     })
 })
-
-const areMapsFilled = (maps) => {
-    let filled = false
-    maps.forEach(map => {
-        if (map.getAttribute("fill") == "#F4F4F6") filled = true
-    })
-    return filled
-}
 
 const sortBrewsByLocation = (name,brews) => {
     removeBrews()
