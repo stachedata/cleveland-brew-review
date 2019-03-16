@@ -33,7 +33,7 @@ const newBrew = (cafe,location,drink,rating,info) => {
 } 
 
 const printBrews = (brews) => {
-    changeTitle("Cuyohoga")
+    changeTitle("Cleveland")
     removeBrews()
     brews.sort((a,b) => b.rating - a.rating)
 
@@ -81,16 +81,14 @@ const removeBrews = () => {
     }
 }
 
-newBrew('Rising Star', "Lakewood", 'Iced Mocha', 3, "Super good.")
+newBrew('Rising Star', "Cleveland Downtown", 'Iced Mocha', 3, "Super good.")
 newBrew("Pheonix", "Cleveland Westside", "Hot Mocha", 3, "Very nice.")
 newBrew("Duck Rabbit", "Cleveland Eastside", "Espresso", 1, "hi")
 newBrew("Rising Star", "Cleveland Downtown", "Coffee", 2, "hi")
 newBrew("Pour", "Cleveland Eastside", "Not Mocha", 1, "It's ok.")
-newBrew("7-Eleven", "Lakewood", "Coffee", 1, "hi")
+newBrew("7-Eleven", "Cleveland Downtown", "Coffee", 1, "hi")
 newBrew("QuickStop", "Cleveland Downtown", "Coffee", 1, "hi")
 printBrews(brews)
-
-
 
 let maps = document.querySelectorAll('path')
 let lastClickedMap
@@ -119,5 +117,3 @@ const sortBrewsByLocation = (name,brews) => {
     printBrews(sortedBrews)
     changeTitle(name)
 }
-
-
