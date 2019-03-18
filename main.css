@@ -1,84 +1,96 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700|Volkhov:700');
 
-html{
-    height: 100%;
-}
 body{
-    margin: 0 3%;
-    min-height: 100%;
+    margin: 5% 12.5%;
     background: #916749;
-    /* overflow: hidden; */
 }
 
 #container{
     display: grid;
-    width: 100vw;
-    height: 100vh;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 40% 28% 28% 4%;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 45% 55%;
+    grid-template-rows: 44% 28% 28% 3%;
     grid-template-areas: 
         "title map"
         "topBrew map"
         "brews brews"
-        "toolbar toolbar";
+        "footer footer";
+}
+
+#title::first-line{
+    font-size: 6.6vw;
+    
 }
 
 #title{
     grid-area: title;
-    margin: 50px 0 0 0;
+    margin: 0;
     font-family: Volkhov;
     font-weight: bold;
     line-height: 130%;
-    font-size: 5.5vw;
+    font-size: 5vw;
     letter-spacing: 0.1em;
     color: #F4F4F6;  
     font-variant: small-caps;
-}
-
-#title::first-line{
-    font-size: 11vw;
-    
+    white-space: nowrap;
 }
 
 #map{
     grid-area: map;
     justify-self: center;
-    align-self: center;
+    align-self: end;
+}
+
+path:hover{
+    fill: #F4F4F6;
+    opacity: .5;
+}
+
+#topBrew::first-line{
+    font-size: 3.5vw;
 }
 
 #topBrew{
     grid-area: topBrew;
-    align-self: center;
     font-family: Montserrat;
-    font-size: 4vw;
+    font-size: 2.5vw;
     font-weight: bold;
     letter-spacing: 0.1em;
-    line-height: 87px;
-    text-align: left;
+    text-align: center;
+    align-self: center;
 }
 
-#topBrew::first-line{
-    font-size: 5vw;
+#topBrew:hover, .brew:hover{
+    background-color: #F4F4F6;
+    opacity: .5;
 }
 
 #brews{
-    list-style-type: none;
-    display: inline-block;
-    overflow-x: auto;
     grid-area: brews;
+    align-self: center;
+    justify-self: center;
+    width: 85%;
     font-size: 2vw;
     font-weight: bold;
     letter-spacing: 0.1em;
-    line-height: 87px;
-    margin: 0 5%;
+    text-align: center
 }
 
-/* .brew{
-    width: 500px;
-    height: auto;
-    text-align: right;
-    white-space: nowrap;
-} */
+.button{
+    grid-area: brews;
+    width: 55px;
+    height: 55px;
+    align-self: center;
+}
+
+#leftButton{
+    justify-self: left;
+}
+
+#rightButton{
+    justify-self: right;
+}
 
 #toolbar{
     grid-area: toolbar;
