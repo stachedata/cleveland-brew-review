@@ -40,6 +40,8 @@ body{
     grid-area: map;
     justify-self: center;
     align-self: end;
+    width: 687px;
+    height: 561px;
 }
 
 path:hover{
@@ -96,3 +98,20 @@ path:hover{
     grid-area: toolbar;
     margin: auto;
 }
+
+@media (max-width: 1500px) {
+    #container{
+      grid-template-areas:
+        'title title'
+        'map map'
+        'topBrew topBrew'
+        'brews brews'
+        'footer footer';
+    }
+
+    #map{
+        grid-area: map;
+        transform: scale(.4)
+    }
+
+  }
