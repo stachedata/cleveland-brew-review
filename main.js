@@ -4,11 +4,11 @@ const createCarousel = () => {
         perPage: 3,
         draggable: false,
     })
-    document.getElementById('left').addEventListener('click', () => brewCarousel.prev(3))
-    document.getElementById('right').addEventListener('click', () => brewCarousel.next(3))
+    document.getElementById('leftButton').addEventListener('click', () => brewCarousel.prev(3))
+    document.getElementById('rightButton').addEventListener('click', () => brewCarousel.next(3))
 }
 
-const changeTitle = (location) => document.getElementById('title').innerHTML = location + "<br>Brew Review"
+const changeTitle = (location) => document.getElementById('title').innerHTML = "Cleveland " + location + "<br>Brew Review"
 
 const brews = []
 
@@ -26,14 +26,14 @@ const newBrew = (cafe,location,drink,rating,info) => {
         stars: stars,
         info: info,
         print() {
-            return this.cafe + this.stars + this.drink
+            return this.cafe + "<br>" + this.drink + this.stars
         }
     }
     brews.push(brew)
 } 
 
 const printBrews = (brews) => {
-    changeTitle("Cleveland")
+    changeTitle('')
     removeBrews()
     brews.sort((a,b) => b.rating - a.rating)
 
@@ -81,13 +81,13 @@ const removeBrews = () => {
     }
 }
 
-newBrew('Rising Star', "Cleveland Downtown", 'Iced Mocha', 3, "Super good.")
-newBrew("Pheonix", "Cleveland Westside", "Hot Mocha", 3, "Very nice.")
-newBrew("Duck Rabbit", "Cleveland Eastside", "Espresso", 1, "hi")
-newBrew("Rising Star", "Cleveland Downtown", "Coffee", 2, "hi")
-newBrew("Pour", "Cleveland Eastside", "Not Mocha", 1, "It's ok.")
-newBrew("7-Eleven", "Cleveland Downtown", "Coffee", 1, "hi")
-newBrew("QuickStop", "Cleveland Downtown", "Coffee", 1, "hi")
+newBrew('Rising Star', "Downtown", 'Iced Mocha', 3, "Super good.")
+newBrew("Pheonix", "Westside", "Hot Mocha", 3, "Very nice.")
+newBrew("Duck Rabbit", "Eastside", "Espresso", 1, "hi")
+newBrew("Rising Star", "Downtown", "Coffee", 2, "hi")
+newBrew("Pour", "Eastside", "Not Mocha", 1, "It's ok.")
+newBrew("7-Eleven", "Downtown", "Coffee", 1, "hi")
+newBrew("QuickStop", "Downtown", "Coffee", 1, "hi")
 printBrews(brews)
 
 let maps = document.querySelectorAll('path')
