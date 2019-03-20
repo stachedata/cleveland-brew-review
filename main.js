@@ -8,7 +8,7 @@ const createCarousel = () => {
     document.getElementById('rightButton').addEventListener('click', () => brewCarousel.next(3))
 }
 
-const changeTitle = (location) => document.getElementById('title').innerHTML = "Cleveland " + location + "<br>Brew Review"
+const changeTitle = (location) => document.getElementById('title').innerHTML = "Cleveland" + location + "<br>Brew Review"
 
 const brews = []
 
@@ -81,14 +81,6 @@ const removeBrews = () => {
     }
 }
 
-newBrew('Rising Star', "Downtown", 'Iced Mocha', 3, "Super good.")
-newBrew("Pheonix", "Westside", "Hot Mocha", 3, "Very nice.")
-newBrew("Duck Rabbit", "Eastside", "Espresso", 1, "hi")
-newBrew("Rising Star", "Downtown", "Coffee", 2, "hi")
-newBrew("Pour", "Eastside", "Not Mocha", 1, "It's ok.")
-newBrew("7-Eleven", "Downtown", "Coffee", 1, "hi")
-newBrew("QuickStop", "Downtown", "Coffee", 1, "hi")
-printBrews(brews)
 
 let maps = document.querySelectorAll('path')
 let lastClickedMap
@@ -117,3 +109,12 @@ const sortBrewsByLocation = (name,brews) => {
     printBrews(sortedBrews)
     changeTitle(name)
 }
+
+newBrew('Rising Star', "Downtown", 'Iced Mocha', 3, "Delicious.")
+newBrew("Pheonix", "Westside", "Hot Mocha", 2, "Okay.")
+newBrew("Duck Rabbit", "Westside", "Espresso", 3, "Amazing.")
+newBrew("Rising Star", "Downtown", "Coffee", 2, "Not bad.")
+newBrew("Pour", "Downtown", "Hot Mocha", 1, "Too gritty.")
+newBrew("Vintage", "Eastside", "Coffee", 2, "Quite rich.")
+newBrew("Starbucks", "Eastside", "Coffee", 1, "Bland.")
+printBrews(brews)
