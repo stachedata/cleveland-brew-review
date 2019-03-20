@@ -45,7 +45,7 @@ body{
 }
 
 path:hover{
-    fill: #F4F4F6;
+    border: #F4F4F6;
     opacity: .5;
 }
 
@@ -64,7 +64,7 @@ path:hover{
 }
 
 #topBrew:hover, .brew:hover{
-    background-color: #F4F4F6;
+    text-decoration-color: #F4F4F6;
     opacity: .5;
 }
 
@@ -79,7 +79,7 @@ path:hover{
     text-align: center
 }
 
-.button{
+.arrow{
     grid-area: brews;
     width: 55px;
     height: 55px;
@@ -99,19 +99,54 @@ path:hover{
     margin: auto;
 }
 
-@media (max-width: 1500px) {
+@media (min-width: 481px) and (max-width: 1280px) {
     #container{
-      grid-template-areas:
-        'title title'
-        'map map'
-        'topBrew topBrew'
-        'brews brews'
-        'footer footer';
+        grid-template-rows: 29% 28% 18% 3%;
+        grid-template-areas:
+            'title title'
+            'map map'
+            'topBrew topBrew'
+            'brews brews'
+            'footer footer';
     }
 
     #map{
-        grid-area: map;
-        transform: scale(.4)
+        transform: scale(.9);
     }
 
-  }
+    #title{
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 823px) {
+    #container{
+        grid-template-rows: 25% 40% 15% 15% 5%;
+        grid-template-areas:
+            'title title'
+            'map map'
+            'topBrew topBrew'
+            'brews brews'
+            'footer footer';
+    }
+    
+    #map{
+        transform: scale(.4);
+        align-self: center;
+    }
+
+    #title{
+        justify-content: center;
+        text-align: center;
+        align-self: center;
+    }
+
+    #brews{
+        
+    }
+
+    .arrow{
+        transform: scale(.4);
+    }
+}
