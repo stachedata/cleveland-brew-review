@@ -1,152 +1,163 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700|Volkhov:700');
 
-body{
-    margin: 5% 12.5%;
-    background: #916749;
+body {
+  /* margin: 5% 12.5%; */
+  background: #916749;
 }
 
-#container{
-    display: grid;
-    width: 100%;
-    height: 100%;
-    grid-template-columns: 45% 55%;
-    grid-template-rows: 44% 28% 28% 3%;
-    grid-template-areas: 
-        "title map"
-        "topBrew map"
-        "brews brews"
-        "footer footer";
+#container {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  grid-template-rows: 44% 28% 28% 3%;
+  grid-template-areas:
+    'title map'
+    'topBrew map'
+    'brews brews'
+    'footer footer';
+  height: 100%;
 }
 
-#title::first-line{
-    font-size: 6.6vw;
-    
+#title::first-line {
+  font-size: 6.6vw;
 }
 
-#title{
-    grid-area: title;
-    margin: 0;
-    font-family: Volkhov;
-    font-weight: bold;
-    line-height: 130%;
-    font-size: 5vw;
-    letter-spacing: 0.1em;
-    color: #F4F4F6;  
-    font-variant: small-caps;
-    white-space: nowrap;
+#title {
+  grid-area: title;
+  margin: 0;
+  font-family: Volkhov;
+  font-weight: bold;
+  line-height: 130%;
+  font-size: 5vw;
+  letter-spacing: 0.1em;
+  color: #f4f4f6;
+  font-variant: small-caps;
+  white-space: nowrap;
 }
 
-#map{
-    grid-area: map;
-    justify-self: center;
-    align-self: end;
-    width: 687px;
-    height: 561px;
+#mapContainer {
+  grid-area: map;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-path:hover{
-    border: #F4F4F6;
-    opacity: .5;
+#map {
+  height: 100%;
+  width: 100%;
+  /* background-size: 200px 300px; */
 }
 
-#topBrew::first-line{
-    font-size: 3.5vw;
+
+#cleveland {
+  display: block;
+  transform: scale(0.75);
+} 
+
+path:hover {
+  border: #f4f4f6;
+  opacity: 0.5;
 }
 
-#topBrew{
-    grid-area: topBrew;
-    font-family: Montserrat;
-    font-size: 2.5vw;
-    font-weight: bold;
-    letter-spacing: 0.1em;
+#topBrew::first-line {
+  font-size: 3.5vw;
+}
+
+#topBrew {
+  grid-area: topBrew;
+  font-family: Montserrat;
+  font-size: 2.5vw;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+  align-self: center;
+}
+
+#topBrew:hover,
+.brew:hover {
+  text-decoration-color: #f4f4f6;
+  opacity: 0.5;
+}
+
+#brews {
+  grid-area: brews;
+  align-self: center;
+  justify-self: center;
+  width: 85%;
+  font-size: 2vw;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.arrow {
+  grid-area: brews;
+  width: 55px;
+  height: 55px;
+  align-self: center;
+}
+
+#leftButton {
+  justify-self: left;
+}
+
+#rightButton {
+  justify-self: right;
+}
+
+#toolbar {
+  grid-area: toolbar;
+  margin: auto;
+}
+
+/* @media (min-width: 481px) and (max-width: 1280px) {
+  #container {
+    grid-template-rows: 29% 28% 18% 3%;
+    grid-template-areas:
+      'title title'
+      'map map'
+      'topBrew topBrew'
+      'brews brews'
+      'footer footer';
+  }
+
+  #map {
+    transform: scale(0.9);
+  }
+
+  #title {
+    justify-content: center;
     text-align: center;
-    align-self: center;
-}
-
-#topBrew:hover, .brew:hover{
-    text-decoration-color: #F4F4F6;
-    opacity: .5;
-}
-
-#brews{
-    grid-area: brews;
-    align-self: center;
-    justify-self: center;
-    width: 85%;
-    font-size: 2vw;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-align: center
-}
-
-.arrow{
-    grid-area: brews;
-    width: 55px;
-    height: 55px;
-    align-self: center;
-}
-
-#leftButton{
-    justify-self: left;
-}
-
-#rightButton{
-    justify-self: right;
-}
-
-#toolbar{
-    grid-area: toolbar;
-    margin: auto;
-}
-
-@media (min-width: 481px) and (max-width: 1280px) {
-    #container{
-        grid-template-rows: 29% 28% 18% 3%;
-        grid-template-areas:
-            'title title'
-            'map map'
-            'topBrew topBrew'
-            'brews brews'
-            'footer footer';
-    }
-
-    #map{
-        transform: scale(.9);
-    }
-
-    #title{
-        justify-content: center;
-        text-align: center;
-    }
+  }
 }
 
 @media (min-width: 320px) and (max-width: 823px) {
-    #container{
-        grid-template-rows: 25% 40% 15% 15% 5%;
-        grid-template-areas:
-            'title title'
-            'map map'
-            'topBrew topBrew'
-            'brews brews'
-            'footer footer';
-    }
-    
-    #map{
-        transform: scale(.4);
-        align-self: center;
-    }
+  #container {
+    grid-template-rows: 25% 40% 15% 15% 5%;
+    grid-template-areas:
+      'title title'
+      'map map'
+      'topBrew topBrew'
+      'brews brews'
+      'footer footer';
+  }
 
-    #title{
-        justify-content: center;
-        text-align: center;
-        align-self: center;
-    }
+  #map {
+    transform: scale(0.4);
+    align-self: center;
+  }
 
-    #brews{
-        
-    }
+  #title {
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+  }
 
-    .arrow{
-        transform: scale(.4);
-    }
+  #brews {
+  }
+
+  .arrow {
+    transform: scale(0.4);
+  }
 }
