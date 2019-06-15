@@ -8,22 +8,22 @@ body {
 #container {
   display: grid;
   grid-template-columns: 45% 55%;
-  grid-template-rows: 44% 28% 28% 3%;
+  grid-template-rows: 44% 28% 28%;
   grid-template-areas:
     'title map'
     'topBrew map'
-    'brews brews'
-    'footer footer';
+    'brews brews';
   height: 100%;
 }
 
 #title::first-line {
-  font-size: 6.6vw;
+  font-size: 7.5vw;
 }
 
 #title {
   grid-area: title;
   margin: 0;
+  padding: 60px;
   font-family: Volkhov;
   font-weight: bold;
   line-height: 130%;
@@ -34,26 +34,11 @@ body {
   white-space: nowrap;
 }
 
-#mapContainer {
-  grid-area: map;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
 #map {
+  grid-area: map;
   height: 100%;
   width: 100%;
-  /* background-size: 200px 300px; */
 }
-
-
-#cleveland {
-  display: block;
-  transform: scale(0.75);
-} 
 
 path:hover {
   border: #f4f4f6;
@@ -93,6 +78,7 @@ path:hover {
 
 .arrow {
   grid-area: brews;
+  padding: 40px;
   width: 55px;
   height: 55px;
   align-self: center;
@@ -106,35 +92,31 @@ path:hover {
   justify-self: right;
 }
 
-#toolbar {
-  grid-area: toolbar;
-  margin: auto;
-}
-
-/* @media (min-width: 481px) and (max-width: 1280px) {
+@media (min-width: 481px) and (max-width: 1300px) {
   #container {
-    grid-template-rows: 29% 28% 18% 3%;
+    grid-template-rows: 15% 40% 20% 25%;
     grid-template-areas:
       'title title'
       'map map'
       'topBrew topBrew'
-      'brews brews'
-      'footer footer';
+      'brews brews';
   }
 
-  #map {
-    transform: scale(0.9);
+  #title::first-line {
+    font-size: 70px;
   }
 
   #title {
+    padding-top: 20px;
     justify-content: center;
     text-align: center;
+    font-size: 40px;
   }
 }
 
 @media (min-width: 320px) and (max-width: 823px) {
   #container {
-    grid-template-rows: 25% 40% 15% 15% 5%;
+    grid-template-rows: 15% 40% 20% 25%;
     grid-template-areas:
       'title title'
       'map map'
@@ -143,21 +125,33 @@ path:hover {
       'footer footer';
   }
 
-  #map {
-    transform: scale(0.4);
-    align-self: center;
+  #title::first-line {
+    font-size: 8.5vmin;
   }
 
   #title {
+    padding: 0;
     justify-content: center;
     text-align: center;
     align-self: center;
+    font-size: 6.5vmin;
+  }
+
+  #topBrew::first-line {
+    font-size: 6vw;
+  }
+
+  #topBrew {
+    font-size: 5vmin;
   }
 
   #brews {
+    width: 80%;
+    font-size: 4vmin;
   }
 
   .arrow {
+    padding: 0;
     transform: scale(0.4);
   }
 }
