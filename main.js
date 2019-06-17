@@ -1,9 +1,8 @@
 const createCarousel = int => {
-  console.log(int)
   const brewCarousel = new Siema({
     selector: '#brews',
     perPage: int,
-    draggable: false,
+    draggable: false
   })
   document
     .getElementById('leftButton')
@@ -34,7 +33,7 @@ const newBrew = (cafe, location, drink, rating, info) => {
     info: info,
     print() {
       return this.cafe + '<br>' + this.drink + this.stars
-    },
+    }
   }
   brews.push(brew)
 }
@@ -44,13 +43,15 @@ const printBrews = brews => {
   removeBrews()
   brews.sort((a, b) => b.rating - a.rating)
 
-  brews.map(brew => {
+  brews.forEach(brew => {
     const brewDiv = document.createElement('div')
     brewDiv.className = 'brew'
 
     if (brew.rating >= 1) {
       if (document.getElementById('topBrew').innerHTML == '') {
-        brewDiv.innerHTML = brew.print()
+        brewDiv.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" fill="gold" width="24" height="24" viewBox="0 0 24 24"><path d="M12 .288l2.833 8.718h9.167l-7.417 5.389 2.833 8.718-7.416-5.388-7.417 5.388 2.833-8.718-7.416-5.389h9.167z"/></svg> ' +
+          brew.print()
         document.getElementById('topBrew').appendChild(brewDiv)
       } else {
         brewDiv.innerHTML = brew.print()
@@ -96,7 +97,7 @@ maps.forEach((map, i) => {
       map != maps[lastClickedMap]
     ) {
       lastClickedMap = i
-      map.setAttribute('fill', '#F4F4F6')
+      map.setAttribute('fill', 'rgba(244, 244, 246, 0.25)')
       sortBrewsByLocation(map.getAttribute('alt'), brews)
     } else {
       lastClickedMap = undefined
@@ -109,7 +110,7 @@ maps.forEach((map, i) => {
 const sortBrewsByLocation = (name, brews) => {
   removeBrews()
   let sortedBrews = []
-  brews.map(brew => {
+  brews.forEach(brew => {
     if (name == brew.location) sortedBrews.push(brew)
   })
   printBrews(sortedBrews)
