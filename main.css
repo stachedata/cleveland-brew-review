@@ -97,7 +97,7 @@ path:hover {
   justify-self: right;
 }
 
-@media (min-width: 481px) and (max-width: 1300px) {
+@media (max-width: 823px) {
   #container {
     grid-template-rows: 15% 40% 20% 25%;
     grid-template-areas:
@@ -140,6 +140,10 @@ path:hover {
     text-align: center;
     align-self: center;
     font-size: 6.5vmin;
+  }
+
+  path:hover {
+    fill: unset;
   }
 
   #topBrew::first-line {
