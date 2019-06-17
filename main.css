@@ -142,10 +142,6 @@ path:hover {
     font-size: 6.5vmin;
   }
 
-  path:hover {
-    fill: unset;
-  }
-
   #topBrew::first-line {
     font-size: 6vw;
   }
