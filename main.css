@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700|Volkhov:700');
 
 body {
-  /* margin: 5% 12.5%; */
-  background: #916749;
+  background: linear-gradient(#f4f4f6, #916749, #281405 62%);
 }
 
 #container {
@@ -29,7 +28,7 @@ body {
   line-height: 130%;
   font-size: 5vw;
   letter-spacing: 0.1em;
-  color: #f4f4f6;
+  color: rgba(40, 20, 5, 0.75);
   font-variant: small-caps;
   white-space: nowrap;
 }
@@ -40,9 +39,13 @@ body {
   width: 100%;
 }
 
+path {
+  stroke: #f5f4f3;
+}
+
 path:hover {
-  border: #f4f4f6;
-  opacity: 0.5;
+  fill: rgba(244, 244, 246, 0.25);
+  cursor: pointer;
 }
 
 #topBrew::first-line {
@@ -57,12 +60,13 @@ path:hover {
   letter-spacing: 0.1em;
   text-align: center;
   align-self: center;
+  color: rgba(245, 244, 243, 0.75);
 }
 
 #topBrew:hover,
 .brew:hover {
-  text-decoration-color: #f4f4f6;
-  opacity: 0.5;
+  font-style: italic;
+  cursor: pointer;
 }
 
 #brews {
@@ -74,6 +78,7 @@ path:hover {
   font-weight: bold;
   letter-spacing: 0.1em;
   text-align: center;
+  color: rgba(245, 244, 243, 0.75);
 }
 
 .arrow {
