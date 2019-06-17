@@ -86,10 +86,13 @@ const removeBrews = () => {
   }
 }
 
+let event
+if (window.innerWidth <= '823') event = 'touchstart'
+else event = 'click'
 let maps = document.querySelectorAll('path')
 let lastClickedMap
 maps.forEach((map, i) => {
-  map.addEventListener('click', () => {
+  map.addEventListener(event, () => {
     if (lastClickedMap != undefined)
       maps[lastClickedMap].setAttribute('fill', 'transparent')
     if (
