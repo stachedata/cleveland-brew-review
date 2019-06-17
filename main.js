@@ -86,13 +86,10 @@ const removeBrews = () => {
   }
 }
 
-let event
-if (window.innerWidth <= '823') event = 'touchstart'
-else event = 'click'
 let maps = document.querySelectorAll('path')
 let lastClickedMap
 maps.forEach((map, i) => {
-  map.addEventListener(event, () => {
+  map.addEventListener('click', () => {
     if (lastClickedMap != undefined)
       maps[lastClickedMap].setAttribute('fill', 'transparent')
     if (
@@ -121,10 +118,16 @@ const sortBrewsByLocation = (name, brews) => {
 }
 
 newBrew('Rising Star', 'Downtown', 'Iced Mocha', 3, 'Delicious.')
-newBrew('Pheonix', 'Westside', 'Hot Mocha', 2, 'Okay.')
+newBrew('Pheonix', 'Westside', 'Hot Mocha', 2, 'Pretty good.')
 newBrew('Duck Rabbit', 'Westside', 'Espresso', 3, 'Amazing.')
 newBrew('Rising Star', 'Downtown', 'Coffee', 2, 'Not bad.')
 newBrew('Pour', 'Downtown', 'Hot Mocha', 1, 'Too gritty.')
 newBrew('Vintage', 'Eastside', 'Coffee', 2, 'Quite rich.')
 newBrew('Starbucks', 'Eastside', 'Coffee', 1, 'Bland.')
+newBrew('Starbucks', 'Westside', 'Coffee', 1, 'Not that good.')
+newBrew('Gypsy Beans', 'Westside', 'Americano', 3, 'So good.')
+newBrew('The Copper Moon', 'Downtown', 'Espresso', 2, 'Enjoyable.')
+newBrew('Civilization', 'Westside', 'Coffee', 2, 'Solid taste.')
+newBrew('Koko Bakery', 'Eastside', 'Iced Coffee', 3, 'Always delicious.')
+newBrew('Byte Cafe', 'Eastside', 'Hot Mocha', 3, 'Decent.')
 printBrews(brews)
